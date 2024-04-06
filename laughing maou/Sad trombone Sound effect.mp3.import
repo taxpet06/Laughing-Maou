@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://mkq4qjmcmvck"
+path="res://.godot/imported/Sad trombone Sound effect.mp3-51b8478bc339e18a4107d93fd3e24cac.mp3str"
+
+[deps]
+
+source_file="res://Sad trombone Sound effect.mp3"
+dest_files=["res://.godot/imported/Sad trombone Sound effect.mp3-51b8478bc339e18a4107d93fd3e24cac.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,83 @@
+[gd_scene load_steps=10 format=3 uid="uid://pi1ylky7v1gg"]
+
+[ext_resource type="Script" path="res://lose.gd" id="1_63uup"]
+[ext_resource type="Texture2D" uid="uid://en0nc2iud4xg" path="res://laugh.png" id="1_jdjru"]
+[ext_resource type="Texture2D" uid="uid://cr3kt04wjsbrn" path="res://back.png" id="1_x8xrp"]
+[ext_resource type="Texture2D" uid="uid://cttyy3uo5wsd3" path="res://maou.png" id="3_vbnd3"]
+[ext_resource type="Theme" uid="uid://df8fnr1gpgqp0" path="res://buttons.tres" id="5_q4tvr"]
+[ext_resource type="AudioStream" uid="uid://dh0p5i5nhkheo" path="res://bup.wav" id="6_3xy4p"]
+[ext_resource type="AudioStream" uid="uid://mkq4qjmcmvck" path="res://Sad trombone Sound effect.mp3" id="7_oxiro"]
+
+[sub_resource type="Animation" id="Animation_tb7li"]
+resource_name = "lose"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AspectRatioContainer/Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.523599, 0.0, -0.523599, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_po00r"]
+_data = {
+"lose": SubResource("Animation_tb7li")
+}
+
+[node name="lose" type="Node2D"]
+script = ExtResource("1_63uup")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_po00r")
+}
+autoplay = "lose"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_3xy4p")
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+offset_right = 720.0
+offset_bottom = 1280.0
+
+[node name="Sprite2D2" type="Sprite2D" parent="AspectRatioContainer"]
+texture = ExtResource("1_x8xrp")
+centered = false
+
+[node name="Sprite2D" type="Sprite2D" parent="AspectRatioContainer"]
+position = Vector2(364, 597)
+scale = Vector2(0.517783, 0.517783)
+texture = ExtResource("1_jdjru")
+
+[node name="Sprite2D3" type="Sprite2D" parent="AspectRatioContainer"]
+texture = ExtResource("3_vbnd3")
+centered = false
+
+[node name="menu" type="Button" parent="."]
+offset_left = 200.0
+offset_top = 1072.0
+offset_right = 552.0
+offset_bottom = 1200.0
+theme = ExtResource("5_q4tvr")
+text = "MENU"
+
+[node name="play" type="Button" parent="."]
+offset_left = 200.0
+offset_top = 912.0
+offset_right = 552.0
+offset_bottom = 1040.0
+theme = ExtResource("5_q4tvr")
+text = "PLAY"
+
+[node name="sad" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_oxiro")
+autoplay = true
+
+[connection signal="pressed" from="menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="play" to="." method="_on_play_pressed"]
